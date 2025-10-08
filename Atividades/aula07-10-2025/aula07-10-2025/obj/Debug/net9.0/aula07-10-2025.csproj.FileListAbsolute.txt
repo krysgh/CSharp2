@@ -1,0 +1,14 @@
+C:\Users\Krysthian\source\repos\aula07-10-2025\aula07-10-2025\bin\Debug\net9.0\aula07-10-2025.exe
+C:\Users\Krysthian\source\repos\aula07-10-2025\aula07-10-2025\bin\Debug\net9.0\aula07-10-2025.deps.json
+C:\Users\Krysthian\source\repos\aula07-10-2025\aula07-10-2025\bin\Debug\net9.0\aula07-10-2025.runtimeconfig.json
+C:\Users\Krysthian\source\repos\aula07-10-2025\aula07-10-2025\bin\Debug\net9.0\aula07-10-2025.dll
+C:\Users\Krysthian\source\repos\aula07-10-2025\aula07-10-2025\bin\Debug\net9.0\aula07-10-2025.pdb
+C:\Users\Krysthian\source\repos\aula07-10-2025\aula07-10-2025\obj\Debug\net9.0\aula07-10-2025.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Krysthian\source\repos\aula07-10-2025\aula07-10-2025\obj\Debug\net9.0\aula07-10-2025.AssemblyInfoInputs.cache
+C:\Users\Krysthian\source\repos\aula07-10-2025\aula07-10-2025\obj\Debug\net9.0\aula07-10-2025.AssemblyInfo.cs
+C:\Users\Krysthian\source\repos\aula07-10-2025\aula07-10-2025\obj\Debug\net9.0\aula07-10-2025.csproj.CoreCompileInputs.cache
+C:\Users\Krysthian\source\repos\aula07-10-2025\aula07-10-2025\obj\Debug\net9.0\aula07-10-2025.dll
+C:\Users\Krysthian\source\repos\aula07-10-2025\aula07-10-2025\obj\Debug\net9.0\refint\aula07-10-2025.dll
+C:\Users\Krysthian\source\repos\aula07-10-2025\aula07-10-2025\obj\Debug\net9.0\aula07-10-2025.pdb
+C:\Users\Krysthian\source\repos\aula07-10-2025\aula07-10-2025\obj\Debug\net9.0\aula07-10-2025.genruntimeconfig.cache
+C:\Users\Krysthian\source\repos\aula07-10-2025\aula07-10-2025\obj\Debug\net9.0\ref\aula07-10-2025.dll
