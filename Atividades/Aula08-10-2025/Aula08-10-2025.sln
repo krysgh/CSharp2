@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36518.9 d17.14
+VisualStudioVersion = 17.14.36518.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercicio1", "Aula08-10-2025\Exercicio1.csproj", "{39355067-3699-49FA-BEF9-77E4F307F86D}"
 EndProject
@@ -18,6 +18,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercicio7", "Exercicio7\Exercicio7.csproj", "{CD8F7D12-BB13-4E59-9D6A-8806F468066D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercicio8", "Exercicio8\Exercicio8.csproj", "{E2CA3FA8-54E6-484D-8042-24C03B14D99F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExercicioTarefa", "ExercicioTarefa\ExercicioTarefa.csproj", "{9A55C8FA-AB2A-42CB-AFC8-9CF755102982}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{E2CA3FA8-54E6-484D-8042-24C03B14D99F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2CA3FA8-54E6-484D-8042-24C03B14D99F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2CA3FA8-54E6-484D-8042-24C03B14D99F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A55C8FA-AB2A-42CB-AFC8-9CF755102982}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A55C8FA-AB2A-42CB-AFC8-9CF755102982}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A55C8FA-AB2A-42CB-AFC8-9CF755102982}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A55C8FA-AB2A-42CB-AFC8-9CF755102982}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
