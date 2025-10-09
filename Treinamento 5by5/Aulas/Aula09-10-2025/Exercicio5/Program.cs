@@ -6,7 +6,10 @@ double MaiorNumero(double A, double B, double C)
 
     if (A > B)
         Maior = A;
-    else if (Maior < C)
+    else
+        Maior = B;
+
+    if (Maior < C)
         Maior = C;
 
     return Maior;
@@ -25,4 +28,4 @@ C = Convert.ToDouble(Console.ReadLine());
 
 Console.WriteLine();
 
-Console.WriteLine($"O maior número entre {A}, {B}, {C} é {MaiorNumero(A, B, C)}");
+Console.WriteLine($"O maior número entre {A}, {B} e {C} é {MaiorNumero(A, B, C)}.");

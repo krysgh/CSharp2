@@ -3,9 +3,10 @@
 
 double ConverterParaDolar(double ValorEmReais, double TaxaCambio)
 {
+    const double DolarUnitario = 5.34;
     TaxaCambio *= 0.01;
 
-    return (ValorEmReais / 5.34) - (TaxaCambio * ValorEmReais);
+    return (ValorEmReais / DolarUnitario) - (TaxaCambio * (ValorEmReais / DolarUnitario));
 }
 
 double Real, TaxaCambio;
