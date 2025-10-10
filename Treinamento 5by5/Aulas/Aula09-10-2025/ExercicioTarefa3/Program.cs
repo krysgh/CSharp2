@@ -8,10 +8,13 @@ for(int i = 0; i < numeros.Length; i++)
     Console.WriteLine($"Digite o {i + 1}º número inteiro: ");
     numeros[i] = Convert.ToInt32(Console.ReadLine());
 
-    if (numeros[i] % 2 == 0)
-        pares++;
-    else
-        impares++;
+    if (numeros[i] != 0)
+    {
+        if (numeros[i] % 2 == 0)
+            pares++;
+        else
+            impares++;
+    }
 
     Console.WriteLine();
 }
@@ -24,12 +27,16 @@ Console.Write("VETOR: [ ");
 
 for (int i = 0; i < numeros.Length; i++)
 {
-    if (numeros[i] % 2 == 0)
-        vetorPar[pares++] = numeros[i];
-    else
-        vetorImpar[impares++] = numeros[i];
+    if (numeros[i] != 0)
+    {
+        if (numeros[i] % 2 == 0)
+            vetorPar[pares++] = numeros[i];
+        else
+            vetorImpar[impares++] = numeros[i];
+    }
 
     Console.Write(numeros[i] + " ");
+
 }
 
 Console.WriteLine("]");
