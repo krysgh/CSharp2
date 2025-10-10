@@ -14,15 +14,7 @@ for (int i = 0;i < precos.Length; i++)
 for (int i = 0; i < precos.Length; i++)
     precosDesconto[i] = precos[i] * (1 - desconto);
 
-Console.Write("PREÇOS ORIGINAIS: ");
+Console.WriteLine("ID\tPREÇOS ORIGINAIS\tPREÇOS COM 10% DE DESCONTO");
 
 for (int i = 0; i < precos.Length; i++)
-    Console.Write(precos[i] + " ");
-
-Console.Write("\nPREÇOS COM 10% DE DESCONTO: ");
-
-for (int i = 0; i < precos.Length; i++)
-    Console.Write(precosDesconto[i] + " ");
-
-Console.WriteLine();
-
+    Console.WriteLine($"{i + 1}\t{precos[i]}\t\t\t{precosDesconto[i]:F2}");

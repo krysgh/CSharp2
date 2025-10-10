@@ -20,7 +20,7 @@ int[] vetorPar = new int[pares];
 int[] vetorImpar = new int[impares];
 pares = 0; impares = 0;
 
-Console.Write("VETOR: ");
+Console.Write("VETOR: [ ");
 
 for (int i = 0; i < numeros.Length; i++)
 {
@@ -32,23 +32,23 @@ for (int i = 0; i < numeros.Length; i++)
     Console.Write(numeros[i] + " ");
 }
 
-Console.WriteLine();
+Console.WriteLine("]");
 
-Console.Write("\nVETOR PAR: ");
+Console.Write("\nVETOR PAR: [ ");
 
 for (int i = 0; i < vetorPar.Length; i++)
 {
     Console.Write(vetorPar[i] + " ");
 }
 
-Console.WriteLine();
+Console.WriteLine("]");
 
-Console.Write("\nVETOR ÍMPAR: ");
+Console.Write("\nVETOR ÍMPAR: [ ");
 
 for (int i = 0; i < vetorImpar.Length; i++)
 {
     Console.Write(vetorImpar[i] + " ");
 }
 
-Console.WriteLine();
+Console.WriteLine("]");
 
