@@ -107,6 +107,7 @@ char[,] InserirSimbolo(char[,] Tabuleiro, char Simbolo)
     {
         Console.WriteLine("Insira a posição a ser jogada. ");
         Console.Write("Linha: ");
+        
         Linha = Convert.ToInt32(Console.ReadLine());
 
         if (!ValidarLinhaTabuleiro(Linha))
@@ -224,7 +225,7 @@ bool VerificarEmpate(char[,] Tabuleiro)
             }
         }
 
-    if (PosicoesPreenchidas == 9)
+    if (PosicoesPreenchidas == Tabuleiro.Length)
     {
         JogoEncerrado = true;
         return true;
@@ -248,10 +249,88 @@ char[,] LimparTabuleiro(char[,] Tabuleiro)
 }
 
 
+void ExibirHistorico(int ModoJogo) {
+
+    Console.WriteLine("HISTÓRICO DE PARTIDAS");
 
 
 
-void Jogo(char[,] Tabuleiro)
+}
+
+void ExibirPlacar(int ModoJogo,int Vitorias, int Derrotas, int Empates)
+{
+    Console.WriteLine("PLACAR GERAL:");
+    Console.WriteLine($"Jogador 1: {Vitorias} VITÓRIAS | {Derrotas} DERROTAS");
+
+    if(ModoJogo == 1)
+    Console.WriteLine($"Jogador 2: {Vitorias} VITÓRIAS | {Derrotas} DERROTAS");
+
+    else if(ModoJogo == 2)
+        Console.WriteLine($"Computador: {Vitorias} VITÓRIAS | {Derrotas} DERROTAS");
+
+    Console.WriteLine($"EMPATES: {Empates}");
+
+
+}
+
+
+void JogoPVP(char[,] Tabuleiro, int VezJogador, char Simbolo, bool Recomecar)
+{
+
+    do { 
+    int RecomecarOpcao = 0;
+    ExibirTabuleiro(Tabuleiro, LinhasTotal, ColunasTotal);
+
+    while (!JogoEncerrado)
+    {
+        Console.WriteLine($"JOGADOR {VezJogador} ({Simbolo}):");
+        Tabuleiro = InserirSimbolo(Tabuleiro, Simbolo);
+
+        if (VerificarVitoria(Tabuleiro))
+        {
+            ExibirTabuleiro(Tabuleiro, LinhasTotal, ColunasTotal);
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine($"\nJogador {VezJogador} ({Simbolo}) venceu!");
+            Console.ResetColor();
+
+            if (Simbolo == 'X') VitoriasJogador1++;
+            else VitoriasJogador2++;
+
+            break;
+        }
+        else if (VerificarEmpate(Tabuleiro))
+        {
+            ExibirTabuleiro(Tabuleiro, LinhasTotal, ColunasTotal);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("\nEmpate!");
+            Console.ResetColor();
+            EmpatesJogadores++;
+            break;
+        }
+
+
+        Simbolo = (Simbolo == 'X') ? 'O' : 'X';
+        VezJogador = (VezJogador == 1) ? 2 : 1;
+
+        ExibirTabuleiro(Tabuleiro, LinhasTotal, ColunasTotal);
+    }
+
+    if (JogoEncerrado)
+    {
+        Console.WriteLine("\nDeseja Recomeçar?\n1.Sim\n2.Encerrar Programa");
+        RecomecarOpcao = Convert.ToInt32(Console.ReadLine());
+
+        switch (RecomecarOpcao)
+        {
+            case 1: Recomecar = true; JogoEncerrado = false; Tabuleiro = LimparTabuleiro(Tabuleiro); Simbolo = 'X'; VezJogador = 1; Console.Clear(); break;
+            case 2: Recomecar = false; Console.WriteLine("Saindo do jogo..."); break;
+            default: Console.WriteLine("Digite 1 ou 2."); break;
+        }
+    }
+} while (Recomecar) ;
+}
+
+void JogoPrincipal(char[,] Tabuleiro)
 {
     int ModoDeJogo = 0, OpcaoMenuPVP = 0, OpcaoMenuPVC = 0;
     bool Recomecar = false;
@@ -276,70 +355,18 @@ void Jogo(char[,] Tabuleiro)
                 switch (OpcaoMenuPVP)
                 {
                     case 1:
-                        do
-                        {
-                            int RecomecarOpcao = 0;
-                            ExibirTabuleiro(Tabuleiro, LinhasTotal, ColunasTotal);
-
-                            while (!JogoEncerrado)
-                            {
-                                Console.WriteLine($"JOGADOR {VezJogador} ({Simbolo}):");
-                                Tabuleiro = InserirSimbolo(Tabuleiro, Simbolo);
-
-                                if (VerificarVitoria(Tabuleiro))
-                                {
-                                    ExibirTabuleiro(Tabuleiro, LinhasTotal, ColunasTotal);
-                                    Console.ForegroundColor = ConsoleColor.Cyan;
-                                    Console.WriteLine($"\nJogador {VezJogador} ({Simbolo}) venceu!");
-                                    Console.ResetColor();
-
-                                    if (Simbolo == 'X') VitoriasJogador1++;
-                                    else VitoriasJogador2++;
-
-                                    break;
-                                }
-                                else if (VerificarEmpate(Tabuleiro))
-                                {
-                                    ExibirTabuleiro(Tabuleiro, LinhasTotal, ColunasTotal);
-                                    Console.ForegroundColor = ConsoleColor.Yellow;
-                                    Console.WriteLine("\nEmpate!");
-                                    Console.ResetColor();
-                                    EmpatesJogadores++;
-                                    break;
-                                }
-
-                                
-                                Simbolo = (Simbolo == 'X') ? 'O' : 'X';
-                                VezJogador = (VezJogador == 1) ? 2 : 1;
-
-                                ExibirTabuleiro(Tabuleiro, LinhasTotal, ColunasTotal);
-                            }
-
-                            if (JogoEncerrado)
-                            {
-                                Console.WriteLine("\nDeseja Recomeçar?\n1.Sim\n2.Encerrar Programa");
-                                RecomecarOpcao = Convert.ToInt32(Console.ReadLine());
-
-                                switch (RecomecarOpcao)
-                                {
-                                    case 1: Recomecar = true; JogoEncerrado = false; Tabuleiro = LimparTabuleiro(Tabuleiro); Simbolo = 'X'; VezJogador = 1; Console.Clear();  break;
-                                    case 2: Recomecar = false; Console.WriteLine("Saindo do jogo..."); break;
-                                    default: Console.WriteLine("Digite 1 ou 2."); break;
-                                }
-                            }
-                        } while (Recomecar);
+                        JogoPVP(Tabuleiro, VezJogador, Simbolo, Recomecar);
                         break;
                     case 2:
-                        Console.WriteLine("HISTÓRICO DE PARTIDAS");
+                        ExibirHistorico(ModoDeJogo);
                         break;
                     case 3:
-                        Console.WriteLine("PLACAR GERAL:");
-                        Console.WriteLine($"Jogador 1: {VitoriasJogador1} VITÓRIAS | {VitoriasJogador2} DERROTAS");
-                        Console.WriteLine($"Jogador 2: {VitoriasJogador2} VITÓRIAS | {VitoriasJogador1} DERROTAS");
-                        Console.WriteLine($"EMPATES: {EmpatesJogadores}");
+                        ExibirPlacar(ModoDeJogo,VitoriasJogador1,VitoriasJogador2,EmpatesJogadores);
                         break;
                     case 4:
 
+                        break;
+                    default:
                         break;
                 }
             } while (OpcaoMenuPVP < 1 || OpcaoMenuPVP > 4);
@@ -351,6 +378,7 @@ void Jogo(char[,] Tabuleiro)
             {
                 ExibirMenuPVC();
                 OpcaoMenuPVC = Convert.ToInt32(Console.ReadLine());
+                Console.Clear();
 
                 switch (OpcaoMenuPVC)
                 {
@@ -421,16 +449,15 @@ void Jogo(char[,] Tabuleiro)
                         } while (Recomecar);
                         break;
                     case 2:
-                        Console.WriteLine("HISTÓRICO DE PARTIDAS");
+                        ExibirHistorico(ModoDeJogo);
                         break;
                     case 3:
-                        Console.WriteLine("PLACAR GERAL:");
-                        Console.WriteLine($"Jogador: {VitoriasPVC} VITÓRIAS | {DerrotasPVC} DERROTAS");
-                        Console.WriteLine($"Jogador 2: {DerrotasPVC} VITÓRIAS | {VitoriasPVC} DERROTAS");
-                        Console.WriteLine($"EMPATES: {EmpatesPVC}");
+                        ExibirPlacar(ModoDeJogo,VitoriasPVC,DerrotasPVC,EmpatesPVC);
                         break;
                     case 4:
 
+                        break;
+                    default:
                         break;
                 }
             } while (OpcaoMenuPVC < 1 || OpcaoMenuPVC > 4);
@@ -444,4 +471,4 @@ void Jogo(char[,] Tabuleiro)
 
 }
 
-Jogo(Tabuleiro);
+JogoPrincipal(Tabuleiro);
