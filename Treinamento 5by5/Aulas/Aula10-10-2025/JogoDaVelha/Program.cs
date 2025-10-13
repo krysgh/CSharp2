@@ -117,6 +117,7 @@ char[,] InserirSimbolo(char[,] Tabuleiro, char Simbolo)
         }
 
         Console.Write("Coluna: ");
+        
         Coluna = Convert.ToInt32(Console.ReadLine());
 
         if (!ValidarColunaTabuleiro(Coluna))
@@ -330,6 +331,75 @@ void JogoPVP(char[,] Tabuleiro, int VezJogador, char Simbolo, bool Recomecar)
 } while (Recomecar) ;
 }
 
+void JogoPVC(char[,] Tabuleiro, char Simbolo, bool Recomecar)
+{
+    do
+    {
+        int RecomecarOpcao = 0;
+        int LinhaComputador = 0, ColunaComputador = 0;
+        ExibirTabuleiro(Tabuleiro, LinhasTotal, ColunasTotal);
+
+        while (!JogoEncerrado)
+        {
+            Console.WriteLine($"JOGADOR ({Simbolo}):");
+            Tabuleiro = InserirSimbolo(Tabuleiro, Simbolo);
+
+            Simbolo = (Simbolo == 'X') ? 'O' : 'X';
+
+            while (true)
+            {
+                LinhaComputador = Random.Shared.Next(0, 3);
+                ColunaComputador = Random.Shared.Next(0, 3);
+
+                if (ValidarPosicaoTabuleiro(Tabuleiro, LinhaComputador, ColunaComputador))
+                {
+                    Tabuleiro[LinhaComputador, ColunaComputador] = 'O';
+                    break;
+                }
+            }
+
+            Simbolo = (Simbolo == 'X') ? 'O' : 'X';
+
+            if (VerificarVitoria(Tabuleiro))
+            {
+                ExibirTabuleiro(Tabuleiro, LinhasTotal, ColunasTotal);
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine($"\nJogador ({Simbolo}) venceu!");
+                Console.ResetColor();
+
+                if (Simbolo == 'X') VitoriasPVC++;
+                else DerrotasPVC++;
+
+                break;
+            }
+            else if (VerificarEmpate(Tabuleiro))
+            {
+                ExibirTabuleiro(Tabuleiro, LinhasTotal, ColunasTotal);
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("\nEmpate!");
+                Console.ResetColor();
+                EmpatesPVC++;
+                break;
+            }
+
+            ExibirTabuleiro(Tabuleiro, LinhasTotal, ColunasTotal);
+        }
+
+        if (JogoEncerrado)
+        {
+            Console.WriteLine("\nDeseja Recomeçar?\n1.Sim\n2.Voltar ao Menu anterior");
+            RecomecarOpcao = Convert.ToInt32(Console.ReadLine());
+
+            switch (RecomecarOpcao)
+            {
+                case 1: Recomecar = true; JogoEncerrado = false; Tabuleiro = LimparTabuleiro(Tabuleiro); Simbolo = 'X'; Console.Clear(); break;
+                case 2: Recomecar = false; Console.WriteLine("Saindo do jogo..."); break;
+                default: Console.WriteLine("Digite 1 ou 2."); break;
+            }
+        }
+    } while (Recomecar);
+}
+
 void JogoPrincipal(char[,] Tabuleiro)
 {
     int ModoDeJogo = 0, OpcaoMenuPVP = 0, OpcaoMenuPVC = 0;
@@ -383,70 +453,7 @@ void JogoPrincipal(char[,] Tabuleiro)
                 switch (OpcaoMenuPVC)
                 {
                     case 1:
-                        do
-                        {
-                            int RecomecarOpcao = 0;
-                            int LinhaComputador = 0, ColunaComputador = 0;
-                            ExibirTabuleiro(Tabuleiro, LinhasTotal, ColunasTotal);
-
-                            while (!JogoEncerrado)
-                            {
-                                Console.WriteLine($"JOGADOR ({Simbolo}):");
-                                Tabuleiro = InserirSimbolo(Tabuleiro, Simbolo);
-
-                                Simbolo = (Simbolo == 'X') ? 'O' : 'X';
-
-                                while (true)
-                                {
-                                    LinhaComputador = Random.Shared.Next(0, 3);
-                                    ColunaComputador = Random.Shared.Next(0, 3);
-
-                                    if(ValidarPosicaoTabuleiro(Tabuleiro, LinhaComputador, ColunaComputador)){
-                                        Tabuleiro[LinhaComputador, ColunaComputador] = 'O';
-                                        break;
-                                    }
-                                }
-
-                                Simbolo = (Simbolo == 'X') ? 'O' : 'X';
-
-                                if (VerificarVitoria(Tabuleiro))
-                                {
-                                    ExibirTabuleiro(Tabuleiro, LinhasTotal, ColunasTotal);
-                                    Console.ForegroundColor = ConsoleColor.Cyan;
-                                    Console.WriteLine($"\nJogador {VezJogador} ({Simbolo}) venceu!");
-                                    Console.ResetColor();
-
-                                    if (Simbolo == 'X') VitoriasPVC++;
-                                    else DerrotasPVC++;
-
-                                    break;
-                                }
-                                else if (VerificarEmpate(Tabuleiro))
-                                {
-                                    ExibirTabuleiro(Tabuleiro, LinhasTotal, ColunasTotal);
-                                    Console.ForegroundColor = ConsoleColor.Yellow;
-                                    Console.WriteLine("\nEmpate!");
-                                    Console.ResetColor();
-                                    EmpatesPVC++;
-                                    break;
-                                }
-
-                                ExibirTabuleiro(Tabuleiro, LinhasTotal, ColunasTotal);
-                            }
-
-                            if (JogoEncerrado)
-                            {
-                                Console.WriteLine("\nDeseja Recomeçar?\n1.Sim\n2.Voltar ao Menu anterior");
-                                RecomecarOpcao = Convert.ToInt32(Console.ReadLine());
-
-                                switch (RecomecarOpcao)
-                                {
-                                    case 1: Recomecar = true; JogoEncerrado = false; Tabuleiro = LimparTabuleiro(Tabuleiro); Simbolo = 'X'; VezJogador = 1; Console.Clear(); break;
-                                    case 2: Recomecar = false; Console.WriteLine("Saindo do jogo..."); break;
-                                    default: Console.WriteLine("Digite 1 ou 2."); break;
-                                }
-                            }
-                        } while (Recomecar);
+                        JogoPVC(Tabuleiro, Simbolo, Recomecar);
                         break;
                     case 2:
                         ExibirHistorico(ModoDeJogo);
