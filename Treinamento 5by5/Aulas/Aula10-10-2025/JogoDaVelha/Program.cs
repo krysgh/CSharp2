@@ -79,7 +79,7 @@ void ExibirTabuleiro(char[,] Tabuleiro, int Linhas, int Colunas)
         Console.ResetColor();
 
         if (ReferenciaLinha != Linhas - 1)
-            Console.WriteLine("\n-----------");
+            Console.WriteLine("\n---+---+---");
 
     }
     Console.WriteLine("\n");
@@ -117,6 +117,7 @@ char[,] InserirSimbolo(char[,] Tabuleiro, char Simbolo)
         }
 
         Console.Write("Coluna: ");
+        
         
         Coluna = Convert.ToInt32(Console.ReadLine());
 
