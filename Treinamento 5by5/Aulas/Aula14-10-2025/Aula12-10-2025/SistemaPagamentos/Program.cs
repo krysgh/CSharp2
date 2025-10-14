@@ -31,7 +31,7 @@ for(int i = 0; i < qtdPagamentos; i++)
 {
     do
     {
-        Console.WriteLine("Digite uma forma de pagamento\n1-Cartão de Crédito (+15%)\n2-Boleto");
+        Console.WriteLine("Digite uma forma de pagamento:\n1-Cartão de Crédito (+15%)\n2-Boleto");
         opcao = Convert.ToInt32(Console.ReadLine());
 
         Console.Clear();

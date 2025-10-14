@@ -33,7 +33,7 @@ namespace SistemaPagamentos
 
         public abstract double ProcessarPagamento();
 
-        public string ToString()
+        public override string ToString()
         {
             return $"Valor Total:R$ {this.ProcessarPagamento():F2}\nData de Pagamento: {this.DataPagamento:d}";
         }
