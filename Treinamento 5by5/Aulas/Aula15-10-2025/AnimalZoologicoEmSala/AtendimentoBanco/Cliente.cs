@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace AtendimentoBanco
 {
-    public class Cliente
+    internal class Cliente
     {
-        private string Nome {  get; set; }
 
-        private int Idade { get; set;}
+        private string Nome { get; set; }
+
+        private int Idade { get; set; }
 
         private bool EhPrioritario { get; set; }
 
@@ -56,9 +57,6 @@ namespace AtendimentoBanco
         {
             this.Proximo = proximo;
         }
-
-
-
 
 
     }

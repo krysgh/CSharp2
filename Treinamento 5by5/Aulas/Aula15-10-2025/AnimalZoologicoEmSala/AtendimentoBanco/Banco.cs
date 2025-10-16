@@ -1,11 +1,10 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-
 using AtendimentoBanco;
 
 Fila f = new Fila();
 
-int opcaoMenu,tipoCliente;
+int opcaoMenu, tipoCliente;
 
 do
 {
@@ -26,11 +25,11 @@ do
                     Console.Write("ADICIONAR CLENTE\n\n1 - Comum\n2 - Prioritário\n\nDigite a opção desejada: ");
                     tipoCliente = Convert.ToInt32(Console.ReadLine());
 
-                    if(tipoCliente == 1)
+                    if (tipoCliente == 1)
                     {
 
                     }
-                    else if(tipoCliente == 2)
+                    else if (tipoCliente == 2)
                     {
 
                     }
@@ -38,8 +37,8 @@ do
                     {
                         Console.WriteLine("Insira uma opção válida!");
                     }
-                }while(tipoCliente < 1 || tipoCliente > 2);
-                
+                } while (tipoCliente < 1 || tipoCliente > 2);
+
                 break;
             case 2:
                 break;

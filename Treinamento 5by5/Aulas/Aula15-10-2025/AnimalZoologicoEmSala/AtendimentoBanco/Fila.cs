@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AtendimentoBanco
 {
-    public class Fila
+    internal class Fila
     {
 
         public Cliente Head { get; set; }
