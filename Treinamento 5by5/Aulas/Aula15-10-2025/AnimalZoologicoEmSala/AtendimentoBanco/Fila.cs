@@ -19,29 +19,29 @@ namespace AtendimentoBanco
             this.Tail = this.Head;
         }
 
-        public bool FilaVazia()
+        public bool Vazia()
         {
             return this.Head == null;
         }
 
-        public void InserirPessoa(Cliente elemento)
+        public void Enfileirar(Cliente c)
         {
-            if (FilaVazia())
+            if (Vazia())
             {
-                this.Head = elemento;
-                this.Tail = elemento;
+                this.Head = c;
+                this.Tail = c;
             }
             else
             {
-                this.Tail.SetProximo(elemento);
-                this.Tail = elemento;
+                this.Tail.SetProximo(c);
+                this.Tail = c;
             }
         }
 
-        public void RemoverPessoa()
+        public void Desenfileirar()
         {
 
-            if (FilaVazia())
+            if (Vazia())
             {
                 Console.WriteLine("Fila Vazia");
             }
@@ -53,9 +53,9 @@ namespace AtendimentoBanco
             }
         }
 
-        public void ImprimirFila()
+        public void MostrarFila()
         {
-            if (FilaVazia())
+            if (Vazia())
             {
                 Console.WriteLine("Fila Vazia");
             }
@@ -64,8 +64,8 @@ namespace AtendimentoBanco
                 Cliente aux = this.Head;
                 while (aux != null)
                 {
-                    Console.WriteLine(aux.GetNome());
-                    aux = aux.GetProximo();
+                    Console.Write($"{aux.GetNome()} -> ");
+                        aux = aux.GetProximo();
                 }
             }
         }

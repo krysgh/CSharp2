@@ -29,26 +29,7 @@ namespace AtendimentoBanco
         {
             return this.Nome;
         }
-        public void SetNome(string nome)
-        {
-            this.Nome = nome;
-        }
-        public int GetIdade()
-        {
-            return this.Idade;
-        }
-        public void SetIdade(int idade)
-        {
-            this.Idade = idade;
-        }
-        public bool GetEhPrioritario()
-        {
-            return this.EhPrioritario;
-        }
-        public void SetEhPrioritario(bool ehPrioritario)
-        {
-            this.EhPrioritario = ehPrioritario;
-        }
+        
         public Cliente GetProximo()
         {
             return this.Proximo;
